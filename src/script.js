@@ -16,8 +16,8 @@ function generateRandomQuote() {
   quoteElementAuthor.textContent = author;
 
   toggleFavoriteBtn.innerHTML = isFavorite
-    ? '<i class="fas fa-heart active"></i>'
-    : '<i class="far fa-heart"></i>';
+    ? '<i class="fas fa-heart fa-2xl"></i>'
+    : '<i class="far fa-heart fa-2xl"></i>';
 
   toggleFavoriteBtn.style.display = 'inline-block';
 }
@@ -28,8 +28,8 @@ function toggleFavorite() {
     currentQuote.isFavorite = !currentQuote.isFavorite;
 
     toggleFavoriteBtn.innerHTML = currentQuote.isFavorite
-      ? '<i class="fas fa-heart active"></i>'
-      : '<i class="far fa-heart"></i>';
+      ? '<i class="fas fa-heart fa-2xl"></i>'
+      : '<i class="far fa-heart fa-2xl"></i>';
 
     if (currentQuote.isFavorite) {
       const favoritesCard = document.createElement('div');

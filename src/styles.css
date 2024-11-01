@@ -1,28 +1,27 @@
 body {
   font-family: Arial, sans-serif;
-  background-image: url('/src/wolf.jpeg');
-  background-repeat: no-repeat;
-
-  color: black;
-}
-
-.text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #f9f9f9;
-  color: #333;
-  padding: 10px 0px;
-  margin: 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+  background: linear-gradient(
+    111.1deg,
+    rgb(0, 40, 70) -4.8%,
+    rgb(255, 115, 115) 82.7%,
+    rgb(255, 175, 123) 97.2%
+  );
 }
 
 .container {
-  max-width: 30%;
+  max-width: 600px;
   margin: 50px auto;
   text-align: center;
+}
+
+.text {
+  background-color: #f9f9f9;
+  color: darkslategray;
+
+  padding: 10px 20px;
+  margin: 10px auto;
+  border-radius: 8px;
+  width: 50%;
 }
 
 .btn {
@@ -32,16 +31,21 @@ body {
   color: #fff;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+  border-radius: 10px;
 }
 
 .btn:hover {
   background-color: #0056b3;
 }
 
-p {
-  text-align: center;
+#toggle-favorite-btn {
+  display: none;
+}
+
+.fa-heart {
+  color: red;
+  margin-left: 15px;
+  border: 4px;
 }
 
 .quote {
@@ -53,21 +57,6 @@ p {
   content: '"';
 }
 
-#toggle-favorite-btn {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-}
-.active {
-  color: red;
-}
-
-.author {
-  font-weight: bolder;
-}
-
 .favorites-container {
   display: flex;
   flex-wrap: wrap;
@@ -76,12 +65,15 @@ p {
 
 .favorite-card {
   background-color: #f9f9f9;
-  color: #333;
-  justify-content: center;
-  align-items: center;
+  color: darkslategray;
+  text-align: center;
   padding: 10px 20px;
   margin: 10px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
   width: 25%;
+}
+
+.author {
+  font-style: italic;
+  font-weight: 900;
 }

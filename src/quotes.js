@@ -74,6 +74,11 @@ const quotes = [
     author: 'Джеймс Мэдисон (Не стример)',
     isFavorite: false,
   },
+  {
+    quote: 'За каждым великим мужчиной стоит женщина, закатывающая глаза',
+    author: 'Джим Кнрри',
+    isFavorite: false,
+  },
 ];
 
 export default quotes;
