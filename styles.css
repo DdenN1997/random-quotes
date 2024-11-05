@@ -1,13 +1,18 @@
+html,
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(
+  /* background: linear-gradient(
     111.1deg,
     rgb(0, 40, 70) -4.8%,
     rgb(255, 115, 115) 82.7%,
     rgb(255, 175, 123) 97.2%
-  );
+  ); */
+  background: url(/src/images/wolf.jpeg) center center / contain no-repeat;
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
 }
-
 .container {
   max-width: 600px;
   margin: 50px auto;

@@ -1,4 +1,9 @@
-import quotes from './quotes.js';
+import quotes from './src/quotes.js';
+import {
+  createFavoriteBtn,
+  showFavoriteCard,
+  hideFavoriteCard,
+} from './src/favoritesHandler.js';
 
 const quoteElementQuote = document.getElementById('quote');
 const quoteElementAuthor = document.getElementById('author');
@@ -15,9 +20,7 @@ function generateRandomQuote() {
   quoteElementQuote.textContent = quote;
   quoteElementAuthor.textContent = author;
 
-  toggleFavoriteBtn.innerHTML = isFavorite
-    ? '<i class="fas fa-heart fa-2xl"></i>'
-    : '<i class="far fa-heart fa-2xl"></i>';
+  createFavoriteBtn(isFavorite, toggleFavoriteBtn);
 
   toggleFavoriteBtn.style.display = 'inline-block';
 }
@@ -27,23 +30,16 @@ function toggleFavorite() {
     const currentQuote = quotes[currentQuoteIndex];
     currentQuote.isFavorite = !currentQuote.isFavorite;
 
-    toggleFavoriteBtn.innerHTML = currentQuote.isFavorite
-      ? '<i class="fas fa-heart fa-2xl"></i>'
-      : '<i class="far fa-heart fa-2xl"></i>';
+    createFavoriteBtn(currentQuote.isFavorite, toggleFavoriteBtn);
 
     if (currentQuote.isFavorite) {
-      const favoritesCard = document.createElement('div');
-      favoritesCard.classList.add('favorite-card');
-      favoritesCard.innerHTML = `<p>"${currentQuote.quote}"</p>
-      <p class="author">${currentQuote.author}</p>`;
-      favoritesContainer.appendChild(favoritesCard);
+      showFavoriteCard(
+        currentQuote.quote,
+        currentQuote.author,
+        favoritesContainer
+      );
     } else {
-      const favoritesCards = document.querySelectorAll('.favorite-card');
-      favoritesCards.forEach((card) => {
-        if (card.textContent.includes(currentQuote.quote)) {
-          card.remove();
-        }
-      });
+      hideFavoriteCard(currentQuote.quote);
     }
   }
 }
