@@ -79,6 +79,11 @@ const quotes = [
     author: 'Джим Кнрри',
     isFavorite: false,
   },
+  {
+    quote: 'Если ночью чешется жопа, значит утром будет вонять палец',
+    author: 'Сергей Козловский',
+    isFavorite: false,
+  },
 ];
 
 export default quotes;

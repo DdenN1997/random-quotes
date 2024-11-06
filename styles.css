@@ -27,6 +27,7 @@ body {
   margin: 10px auto;
   border-radius: 8px;
   width: 50%;
+  border: solid;
 }
 
 .btn {
@@ -74,6 +75,7 @@ body {
   text-align: center;
   padding: 10px 20px;
   margin: 10px;
+  border: solid;
   border-radius: 8px;
   width: 25%;
 }
