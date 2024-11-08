@@ -45,7 +45,7 @@ body {
   background-color: #0056b3;
 }
 
-#toggle-favorite-btn {
+#favorite-btn {
   display: none;
   cursor: pointer;
 }
