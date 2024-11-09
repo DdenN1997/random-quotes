@@ -56,6 +56,18 @@ body {
   border: 4px;
 }
 
+.close-icon {
+  position: absolute; /* Абсолютное позиционирование внутри карточки */
+  top: 15px; /* Отступ сверху */
+  right: 8px; /* Отступ справа */
+  cursor: pointer;
+  color: #888;
+}
+
+.close-icon:hover {
+  color: #333; /* Темнее при наведении */
+}
+
 .quote {
   font-style: italic;
 }
@@ -72,6 +84,7 @@ body {
 }
 
 .favorite-card {
+  position: relative;
   background-color: #f9f9f9;
   color: darkslategray;
   text-align: center;

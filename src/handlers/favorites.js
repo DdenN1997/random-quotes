@@ -36,8 +36,16 @@ function showFavoriteCard(quote, container) {
   favoritesCard.classList.add('favorite-card');
   favoritesCard.dataset.quoteId = id;
   favoritesCard.innerHTML = `<p>"${text}"</p>
+      <i class="fas fa-solid fa-xmark fa-lg close-icon"></i>
       <p class="author">${author}</p>`;
   container.appendChild(favoritesCard);
+
+  const closeIcon = favoritesCard.querySelector('.close-icon');
+  closeIcon.addEventListener('click', () => {
+    quote.isFavorite = false;
+    toggleFavoriteBtnIcon(quote.isFavorite, favoriteBtn);
+    favoritesCard.remove();
+  });
 }
 
 function hideFavoriteCard(id) {
