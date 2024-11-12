@@ -2,7 +2,7 @@ import { favoriteBtn } from '../../index.js';
 
 function toggleFavorite({ quote, btn, container }) {
   quote.isFavorite = !quote.isFavorite;
-  toggleFavoriteBtnIcon(quote.isFavorite, btn);
+  toggleFavoriteBtnIcon(quote.isFavorite);
 
   if (quote.isFavorite) {
     showFavoriteCard(quote, container);
@@ -16,8 +16,8 @@ function handleFavorite(isFavorite) {
   toggleFavoriteBtnIcon(isFavorite, favoriteBtn);
 }
 
-function toggleFavoriteBtnIcon(isFavorite, button) {
-  button.innerHTML = isFavorite
+function toggleFavoriteBtnIcon(isFavorite) {
+  favoriteBtn.innerHTML = isFavorite
     ? '<i class="fas fa-heart fa-2xl"></i>'
     : '<i class="far fa-heart fa-2xl"></i>';
 }
@@ -36,15 +36,17 @@ function showFavoriteCard(quote, container) {
   favoritesCard.classList.add('favorite-card');
   favoritesCard.dataset.quoteId = id;
   favoritesCard.innerHTML = `<p>"${text}"</p>
-      <i class="fas fa-solid fa-xmark fa-lg close-icon"></i>
-      <p class="author">${author}</p>`;
+  <p class="author">${author}</p>
+  <i class="fas fa-solid fa-xmark fa-lg close-icon"></i>`;
   container.appendChild(favoritesCard);
 
   const closeIcon = favoritesCard.querySelector('.close-icon');
   closeIcon.addEventListener('click', () => {
-    quote.isFavorite = false;
-    toggleFavoriteBtnIcon(quote.isFavorite, favoriteBtn);
-    favoritesCard.remove();
+    quote.isFavorite = !quote.isFavorite;
+    hideFavoriteCard(id);
+    if (quote.id == id) {
+      toggleFavoriteBtnIcon(quote.isFavorite);
+    }
   });
 }
 

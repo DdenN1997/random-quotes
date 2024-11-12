@@ -240,6 +240,78 @@ const quotes = [
     author: 'Сунь-Вынь',
     isFavorite: false,
   },
+  {
+    id: 'fe28668a',
+    text: 'Лучше быть падким на женский вокал, чем на члены',
+    author: 'Илья',
+    isFavorite: false,
+  },
+  {
+    id: 'a2fd3cbe',
+    text: 'Шутить про Панина - пидорство',
+    author: 'Панин',
+    isFavorite: false,
+  },
+  {
+    id: '7ebf1244',
+    text: 'Дай доем',
+    author: 'Дед',
+    isFavorite: false,
+  },
+  {
+    id: '03cc8bbf',
+    text: 'Отдыхать лучше, чем работать',
+    author: 'Змицер',
+    isFavorite: false,
+  },
+  {
+    id: '9ed8cbc6',
+    text: 'Запомните твари, а то забудете.',
+    author: 'АУФ',
+    isFavorite: false,
+  },
+  {
+    id: '0bf6052d',
+    text: 'Если у волка есть яйца, значит он не волчица',
+    author: 'АУФ',
+    isFavorite: false,
+  },
+  {
+    id: 'a30afc6b',
+    text: 'Лучше быть последним в стае волков, чем первым в стае шакалов',
+    author: 'АУФ',
+    isFavorite: false,
+  },
+  {
+    id: 'f303c4b7',
+    text: 'Волк слабее льва и тигра, но волк в цирке не выступает',
+    author: 'АУФ',
+    isFavorite: false,
+  },
+  {
+    id: 'cc9c0138',
+    text: 'Если волк дышит - он жим, если не дышит - мёртв',
+    author: 'АУФ',
+    isFavorite: false,
+  },
+  {
+    id: '6bc27ea8',
+    text: 'В жизни есть две дороги: первая и вторая',
+    author: 'Доминик Торетто',
+    isFavorite: false,
+  },
+  {
+    id: '512a1fec',
+    text: 'Лучшая покупка - это новая финка НКВД ограниченной серии',
+    author: 'Доминик Торетто',
+    isFavorite: false,
+  },
+  {
+    id: 'dbdf61c1',
+    text: 'Скорость - это speed, но играть со спидами - расстраивать маму',
+    author: 'Доминик Торетто',
+    isFavorite: false,
+  },
 ];
 
 export default quotes;
