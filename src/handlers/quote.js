@@ -8,10 +8,15 @@ function handleQuote(quotes, setCurrentQuote) {
 }
 
 function displayQuote(quote) {
-  const { text, author, isFavorite } = quote;
-  const quoteElementQuote = document.getElementById('quote');
-  const quoteElementAuthor = document.getElementById('author');
-  quoteElementQuote.textContent = text;
+  const { id, text, author, isFavorite } = quote;
+  const quoteElement = document.getElementById('quote');
+  const quoteElementText = document.getElementById('quote-text');
+  const quoteElementAuthor = document.getElementById('quote-author');
+  quoteElement.style.height = '8em';
+  quoteElementText.style.minHeight = '60px';
+  // Add ID in Current quote
+  quoteElement.dataset.currentQuoteId = id;
+  quoteElementText.textContent = text;
   quoteElementAuthor.textContent = author;
   handleFavorite(isFavorite);
 }
@@ -21,4 +26,4 @@ function choseRandomQuote(quotes) {
   return quotes[randomIndex];
 }
 
-export { handleQuote };
+export { handleQuote, displayQuote };

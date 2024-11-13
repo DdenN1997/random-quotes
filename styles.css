@@ -20,10 +20,9 @@ body {
   text-align: center;
 }
 
-.text {
+#quote {
   background-color: #f9f9f9;
   color: darkslategray;
-
   padding: 10px 20px;
   margin: 10px auto;
   border-radius: 8px;
@@ -56,24 +55,24 @@ body {
   border: 4px;
 }
 
-.close-icon {
-  position: absolute; /* Абсолютное позиционирование внутри карточки */
-  top: 15px; /* Отступ сверху */
-  right: 8px; /* Отступ справа */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 8px;
   cursor: pointer;
   color: #888;
 }
 
-.close-icon:hover {
-  color: #333; /* Темнее при наведении */
+.close-btn:hover {
+  color: #333;
 }
 
-.quote {
+.quote-text {
   font-style: italic;
 }
 
-.quote::before,
-.quote::after {
+.quote-text::before,
+.quote-text::after {
   content: '"';
 }
 
@@ -95,7 +94,7 @@ body {
   width: 25%;
 }
 
-.author {
+.quote-author {
   font-style: italic;
   font-weight: 900;
 }

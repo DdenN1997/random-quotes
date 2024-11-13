@@ -1,4 +1,4 @@
-import { favoriteBtn } from '../../index.js';
+import { quoteFavoriteBtn } from '../../index.js';
 
 function toggleFavorite({ quote, btn, container }) {
   quote.isFavorite = !quote.isFavorite;
@@ -12,12 +12,12 @@ function toggleFavorite({ quote, btn, container }) {
 }
 
 function handleFavorite(isFavorite) {
-  showFavoriteBtn(favoriteBtn);
-  toggleFavoriteBtnIcon(isFavorite, favoriteBtn);
+  showFavoriteBtn(quoteFavoriteBtn);
+  toggleFavoriteBtnIcon(isFavorite, quoteFavoriteBtn);
 }
 
 function toggleFavoriteBtnIcon(isFavorite) {
-  favoriteBtn.innerHTML = isFavorite
+  quoteFavoriteBtn.innerHTML = isFavorite
     ? '<i class="fas fa-heart fa-2xl"></i>'
     : '<i class="far fa-heart fa-2xl"></i>';
 }
@@ -30,28 +30,33 @@ function hideFavoriteBtn(btn) {
   btn.style.display = 'none';
 }
 
+function removeFavoriteCard(quote) {
+  quote.isFavorite = !quote.isFavorite;
+  hideFavoriteCard(quote.id);
+  const currentQuote = document.getElementById('quote');
+  const currentQuoteId = currentQuote.dataset.currentQuoteId;
+  if (currentQuoteId === quote.id) {
+    toggleFavoriteBtnIcon(quote.isFavorite);
+  }
+}
+
 function showFavoriteCard(quote, container) {
   const { id, text, author } = quote;
   const favoritesCard = document.createElement('div');
   favoritesCard.classList.add('favorite-card');
-  favoritesCard.dataset.quoteId = id;
-  favoritesCard.innerHTML = `<p>"${text}"</p>
-  <p class="author">${author}</p>
-  <i class="fas fa-solid fa-xmark fa-lg close-icon"></i>`;
+  // Add ID in Favorite quote card
+  favoritesCard.dataset.favoriteQuoteId = id;
+  favoritesCard.innerHTML = `<p class="quote-text">${text}</p>
+  <p class="quote-author">${author}</p>
+  <i class="fas fa-solid fa-xmark fa-xl close-btn"></i>`;
   container.appendChild(favoritesCard);
 
-  const closeIcon = favoritesCard.querySelector('.close-icon');
-  closeIcon.addEventListener('click', () => {
-    quote.isFavorite = !quote.isFavorite;
-    hideFavoriteCard(id);
-    if (quote.id == id) {
-      toggleFavoriteBtnIcon(quote.isFavorite);
-    }
-  });
+  const closeBtn = favoritesCard.querySelector('.close-btn');
+  closeBtn.addEventListener('click', () => removeFavoriteCard(quote));
 }
 
 function hideFavoriteCard(id) {
-  const card = document.querySelector(`.favorite-card[data-quote-id="${id}"]`);
+  const card = document.querySelector(`[data-favorite-quote-id="${id}"]`);
   if (card) {
     card.remove();
   }
