@@ -16,7 +16,7 @@ function displayQuote(quote) {
   quoteElementText.style.minHeight = '60px';
   // Add ID in Current quote
   quoteElement.dataset.currentQuoteId = id;
-  quoteElementText.textContent = text;
+  quoteElementText.textContent = `"${text}"`;
   quoteElementAuthor.textContent = author;
   handleFavorite(isFavorite);
 }

@@ -46,7 +46,7 @@ function showFavoriteCard(quote, container) {
   favoritesCard.classList.add('favorite-card');
   // Add ID in Favorite quote card
   favoritesCard.dataset.favoriteQuoteId = id;
-  favoritesCard.innerHTML = `<p class="quote-text">${text}</p>
+  favoritesCard.innerHTML = `<p class="quote-text">"${text}"</p>
   <p class="quote-author">${author}</p>
   <i class="fas fa-solid fa-xmark fa-xl close-btn"></i>`;
   container.appendChild(favoritesCard);
