@@ -1,7 +1,13 @@
 import { quoteFavoriteBtn } from '../../index.js';
+import {
+  localStorageSetItem,
+  localStorageFavoritesArray,
+  removeQuoteFromLocalStorage,
+} from '../utils/localStorage.js';
 
-function toggleFavorite({ quote, btn, container }) {
+function toggleFavorite(quote, setCurrentQuote, btn, container) {
   quote.isFavorite = !quote.isFavorite;
+  setCurrentQuote(quote);
   toggleFavoriteBtnIcon(quote.isFavorite);
 
   if (quote.isFavorite) {
@@ -9,6 +15,7 @@ function toggleFavorite({ quote, btn, container }) {
   } else {
     hideFavoriteCard(quote.id);
   }
+  // localStorageSetItem('currentQuote', quote);
 }
 
 function handleFavorite(isFavorite) {
@@ -38,6 +45,8 @@ function removeFavoriteCard(quote) {
   if (currentQuoteId === quote.id) {
     toggleFavoriteBtnIcon(quote.isFavorite);
   }
+  removeQuoteFromLocalStorage(quote.id);
+  localStorageSetItem('currentQuote', quote);
 }
 
 function showFavoriteCard(quote, container) {
@@ -50,6 +59,7 @@ function showFavoriteCard(quote, container) {
   <p class="quote-author">${author}</p>
   <i class="fas fa-solid fa-xmark fa-xl close-btn"></i>`;
   container.appendChild(favoritesCard);
+  localStorageFavoritesArray(quote);
 
   const closeBtn = favoritesCard.querySelector('.close-btn');
   closeBtn.addEventListener('click', () => removeFavoriteCard(quote));
@@ -60,6 +70,7 @@ function hideFavoriteCard(id) {
   if (card) {
     card.remove();
   }
+  removeQuoteFromLocalStorage(id);
 
   // card && card.remove();
 }

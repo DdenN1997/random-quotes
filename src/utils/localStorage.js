@@ -11,6 +11,20 @@ function localStorageSetItem(key, value) {
   }
 }
 
+function localStorageFavoritesArray(quote) {
+  let favorites = JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
+  if (!favorites.find((fav) => fav.id === quote.id)) {
+    favorites.push(quote);
+    localStorage.setItem('favoriteQuotes', JSON.stringify(favorites));
+  }
+}
+
+function removeQuoteFromLocalStorage(id) {
+  let favorites = JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
+  favorites = favorites.filter((quote) => quote.id !== id);
+  localStorage.setItem('favoriteQuotes', JSON.stringify(favorites));
+}
+
 function localStorageGetItem(key) {
   const value = localStorage.getItem(key);
   try {
@@ -20,7 +34,7 @@ function localStorageGetItem(key) {
   }
 }
 
-function localStorageClear(key) {
+function localStorageRemove(key) {
   localStorage.removeItem(key);
 }
 
@@ -31,6 +45,8 @@ function clearLocalStorage() {
 export {
   localStorageSetItem,
   localStorageGetItem,
-  localStorageClear,
+  localStorageRemove,
   clearLocalStorage,
+  localStorageFavoritesArray,
+  removeQuoteFromLocalStorage,
 };
