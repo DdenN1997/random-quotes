@@ -5,9 +5,12 @@ import {
   hideFavoriteBtn,
   showFavoriteCard,
 } from './src/handlers/favorites.js';
-import { localStorageSetItem } from './src/utils/localStorage.js';
+import {
+  localStorageSetItem,
+  localStorageSetArray,
+} from './src/utils/localStorage.js';
 
-let currentQuote = JSON.parse(localStorage.getItem('currentQuote'));
+let currentQuote = JSON.parse(localStorage.getItem('currentQuote')) || {};
 
 function setCurrentQuote(quote) {
   currentQuote = quote;
@@ -31,8 +34,8 @@ quoteFavoriteBtn.addEventListener('click', () =>
   toggleFavorite(
     currentQuote,
     setCurrentQuote,
-    quoteFavoriteBtn,
-    favoritesContainer
+    favoritesContainer,
+    'favoriteQuotes'
   )
 );
 

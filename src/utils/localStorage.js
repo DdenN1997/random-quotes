@@ -11,18 +11,28 @@ function localStorageSetItem(key, value) {
   }
 }
 
-function localStorageFavoritesArray(quote) {
-  let favorites = JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
-  if (!favorites.find((fav) => fav.id === quote.id)) {
-    favorites.push(quote);
-    localStorage.setItem('favoriteQuotes', JSON.stringify(favorites));
+function localStorageSetArray(key, quote) {
+  let array = [];
+  try {
+    array = JSON.parse(localStorage.getItem(key)) || [];
+  } catch (e) {
+    console.error('Ошибка при чтении из localStorage:', e);
+  }
+
+  if (!array.find((fav) => fav.id === quote.id)) {
+    array.push(quote);
+    try {
+      localStorage.setItem(key, JSON.stringify(array));
+    } catch (e) {
+      console.error('Ошибка при записи в localStorage:', e);
+    }
   }
 }
 
-function removeQuoteFromLocalStorage(id) {
-  let favorites = JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
-  favorites = favorites.filter((quote) => quote.id !== id);
-  localStorage.setItem('favoriteQuotes', JSON.stringify(favorites));
+function removeQuoteFromLocalStorage(id, key) {
+  let array = JSON.parse(localStorage.getItem(key)) || [];
+  array = array.filter((quote) => quote.id !== id);
+  localStorage.setItem(key, JSON.stringify(array));
 }
 
 function localStorageGetItem(key) {
@@ -47,6 +57,6 @@ export {
   localStorageGetItem,
   localStorageRemove,
   clearLocalStorage,
-  localStorageFavoritesArray,
+  localStorageSetArray,
   removeQuoteFromLocalStorage,
 };

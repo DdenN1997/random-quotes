@@ -1,5 +1,6 @@
 import { handleFavorite } from './favorites.js';
 import { generateRandomInt } from '../utils/math.js';
+import { localStorageSetArray } from '../utils/localStorage.js';
 
 function handleQuote(quotes, setCurrentQuote) {
   const randomQuote = choseRandomQuote(quotes);
@@ -22,7 +23,29 @@ function displayQuote(quote) {
 }
 
 function choseRandomQuote(quotes) {
-  const randomIndex = generateRandomInt(quotes.length);
+  let arrayCurrentQuotes =
+    JSON.parse(localStorage.getItem('arrayCurrentQuotes')) || [];
+
+  if (arrayCurrentQuotes.length >= quotes.length) {
+    arrayCurrentQuotes = [];
+    localStorage.setItem(
+      'arrayCurrentQuotes',
+      JSON.stringify(arrayCurrentQuotes)
+    );
+  }
+
+  let randomIndex;
+  let isUnique = false;
+
+  while (!isUnique) {
+    randomIndex = generateRandomInt(quotes.length);
+    isUnique = !arrayCurrentQuotes.some(
+      (quote) => quote.id === quotes[randomIndex].id
+    );
+  }
+
+  localStorageSetArray('arrayCurrentQuotes', quotes[randomIndex]);
+
   return quotes[randomIndex];
 }
 
